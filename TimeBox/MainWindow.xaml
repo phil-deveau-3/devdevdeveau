@@ -9,7 +9,7 @@
         AllowsTransparency="True"
         WindowStyle="None" 
         Background="Transparent"
-        Title="Count Down Timer" Width="525" Height="200" MouseDown="MainWindow_OnMouseDown">
+        Title="Count Down Timer" Width="370" Height="140" MouseDown="MainWindow_OnMouseDown">
     <Window.Resources>
         <ObjectDataProvider ObjectType="local:MainWindowViewModel" x:Key="ViewModel"></ObjectDataProvider>
         <Style TargetType="Grid">
@@ -19,8 +19,8 @@
             <Setter Property="Opacity" Value="0.35"></Setter>
             <Setter Property="Background" Value="Gray"></Setter>
             <Setter Property="Margin" Value="3"></Setter>
-            <Setter Property="Height" Value="40"></Setter>
-            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -42,12 +42,12 @@
     <Border BorderBrush="Black" CornerRadius="50" Background="Black">
         <DockPanel Margin="10">
             <Grid DockPanel.Dock="Right">
-                <userControls:CircularProgressBar HorizontalAlignment="Center" VerticalAlignment="Center" Percentage="100" StrokeThickness="10" SegmentColor="#f7911d" Radius="50" />
-                <userControls:CircularProgressBar HorizontalAlignment="Center" VerticalAlignment="Center" Percentage="{Binding Source={StaticResource ViewModel}, Path=Percentage}" StrokeThickness="10" SegmentColor="DodgerBlue" Radius="50" />
+                <userControls:CircularProgressBar HorizontalAlignment="Center" VerticalAlignment="Center" Percentage="100" StrokeThickness="10" SegmentColor="#f7911d" Radius="30" />
+                <userControls:CircularProgressBar HorizontalAlignment="Center" VerticalAlignment="Center" Percentage="{Binding Source={StaticResource ViewModel}, Path=Percentage}" StrokeThickness="10" SegmentColor="DodgerBlue" Radius="30" />
             </Grid>
 
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-                <Label Width="50"></Label>
+                <Label Width="20"></Label>
                 <Button Content="+1" ToolTip="Add One Minute" Command="{Binding Source={StaticResource ViewModel}, Path=AddOneMinuteCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
                 <Button Content="+5" ToolTip="Add Five Minutes" Command="{Binding Source={StaticResource ViewModel}, Path=AddFiveMinutesCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
                 <Button Content="+10" ToolTip="Add 10 Minutes" Command="{Binding Source={StaticResource ViewModel}, Path=AddTenMinutesCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
@@ -63,7 +63,7 @@
                Foreground="DodgerBlue"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center"
-               FontSize="80"></Label>
+               FontSize="50"></Label>
         </DockPanel>
     </Border>
 </Window>

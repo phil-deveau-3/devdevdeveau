@@ -64,10 +64,24 @@
     <Compile Include="UserControls\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddFiveMinutesCommand.cs" />
+    <Compile Include="ViewModels\AddOneMinuteCommand.cs" />
+    <Compile Include="ViewModels\AddTenMinutesCommand.cs" />
+    <Compile Include="ViewModels\AddTimeCommand.cs" />
+    <Compile Include="ViewModels\Alarm.cs" />
+    <Compile Include="ViewModels\AlarmState.cs" />
+    <Compile Include="ViewModels\AlarmStrategy.cs" />
     <Compile Include="ViewModels\CountdownTimer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ViewModels\CurrentDirectoryStrategy.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MyMusicAlarmStrategy.cs" />
+    <Compile Include="ViewModels\QuitCommand.cs" />
+    <Compile Include="ViewModels\ResetTimerCommand.cs" />
+    <Compile Include="ViewModels\StartTimerCommand.cs" />
+    <Compile Include="ViewModels\StopTimerCommand.cs" />
+    <Compile Include="ViewModels\SystemBeepAlarmStrategy.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
