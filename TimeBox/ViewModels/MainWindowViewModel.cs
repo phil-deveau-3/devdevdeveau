@@ -31,12 +31,13 @@ namespace TimeBox.ViewModels
             var mediaPlayer = new MediaPlayer();
             AlarmStrategy alarm = new Alarm(new CurrentDirectoryStrategy(mediaPlayer),
                 new MyMusicAlarmStrategy(mediaPlayer), new SystemBeepAlarmStrategy());
-
-            var timespan = TimeSpan.FromMinutes(0.5);
+            
+            //TODO: Get timespan from elsewhere
+            var timespan = TimeSpan.FromMinutes(5);
             TimeRemaining = timespan.ToString(@"hh\:mm\:ss");
             Percentage = 100d;
 
-            Timer = new CountdownTimer(timespan);
+            Timer = new CountdownTimer(new FiveMinuteTimerDuration());
 
             Timer.Elapsed += (sender, args) =>
             {

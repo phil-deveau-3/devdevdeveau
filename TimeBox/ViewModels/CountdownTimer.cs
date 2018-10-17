@@ -12,10 +12,10 @@ namespace TimeBox.ViewModels
 
         public double PercentRemaining => _timeRemaining / _countdown.TotalMilliseconds * 100;
 
-        public CountdownTimer(TimeSpan countdown) : base(1.0d)
+        public CountdownTimer(TimerDuration duration) : base(1.0d)
         {
-            _countdown = countdown;
-            _timeRemaining = countdown.TotalMilliseconds;
+            _countdown = duration.Duration;
+            _timeRemaining = duration.Duration.TotalMilliseconds;
             Elapsed += CountdownTimer_Elapsed;
         }
 

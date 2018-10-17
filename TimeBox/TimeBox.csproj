@@ -75,6 +75,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ViewModels\CurrentDirectoryStrategy.cs" />
+    <Compile Include="ViewModels\FiveMinuteTimerDuration.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MyMusicAlarmStrategy.cs" />
     <Compile Include="ViewModels\QuitCommand.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="ViewModels\StartTimerCommand.cs" />
     <Compile Include="ViewModels\StopTimerCommand.cs" />
     <Compile Include="ViewModels\SystemBeepAlarmStrategy.cs" />
+    <Compile Include="ViewModels\TimerDuration.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
