@@ -7,21 +7,22 @@ namespace TimeBox.ViewModels
     public class MyMusicAlarmStrategy : AlarmStrategy
     {
         private readonly MediaPlayer _mediaPlayer;
+        private string _path;
 
         public MyMusicAlarmStrategy(MediaPlayer mediaPlayer)
         {
             _mediaPlayer = mediaPlayer;
+            _path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "timebox.mp3");
         }
 
         public override AlarmState HandleAlarm()
         {
-            if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "timeup.mp3")))
+            if (!File.Exists(_path))
                 return AlarmState.Unhandled;
 
             _mediaPlayer.Dispatcher.Invoke(() =>
             {
-                _mediaPlayer.Open(new Uri(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-                    "timeup.mp3")));
+                _mediaPlayer.Open(new Uri(_path));
                 _mediaPlayer.Play();
             });
 

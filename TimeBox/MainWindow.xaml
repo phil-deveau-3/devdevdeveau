@@ -9,11 +9,34 @@
         AllowsTransparency="True"
         WindowStyle="None" 
         Background="Transparent"
-        Title="Count Down Timer" Width="370" Height="140" MouseDown="MainWindow_OnMouseDown">
+        Title="Count Down Timer" Width="420" Height="140" MouseDown="MainWindow_OnMouseDown">
     <Window.Resources>
         <ObjectDataProvider ObjectType="local:MainWindowViewModel" x:Key="ViewModel"></ObjectDataProvider>
         <Style TargetType="Grid">
             <Setter Property="Background" Value="Transparent" ></Setter>
+        </Style>
+        <Style TargetType="ToggleButton">
+            <Setter Property="Opacity" Value="0.35"></Setter>
+            <Setter Property="Background" Value="Gray"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Opacity" Value="1.0"></Setter>
+                    <Setter Property="Background" Value="DodgerBlue"></Setter>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Opacity" Value="0.35"></Setter>
@@ -55,6 +78,7 @@
                 <Button Content="Start" Command="{Binding Source={StaticResource ViewModel}, Path=StartTimerCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
                 <Button Content="Stop" Command="{Binding Source={StaticResource ViewModel}, Path=StopTimerCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
                 <Button Content="Clear" Command="{Binding Source={StaticResource ViewModel}, Path=ResetTimerCommand}" CommandParameter="{Binding Source={StaticResource ViewModel}, Path=Timer}"></Button>
+                <ToggleButton Name="AlwaysOnTop" Content="Top"></ToggleButton>
                 <Button Content="Quit" Command="{Binding Source={StaticResource ViewModel}, Path=QuitCommand}"></Button>
             </StackPanel>
             <Label Content="{Binding Source={StaticResource ViewModel}, Path=TimeRemaining}"

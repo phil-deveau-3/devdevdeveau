@@ -6,7 +6,6 @@ namespace TimeBox.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
-        private AlarmStrategy _alarm;
         public string TimeRemaining { get; set; }
         public CountdownTimer Timer { get; }
         public double Percentage { get; set; }
@@ -30,10 +29,10 @@ namespace TimeBox.ViewModels
             AddTenMinutesCommand = new AddTenMinutesCommand();
 
             var mediaPlayer = new MediaPlayer();
-            _alarm = new Alarm(new CurrentDirectoryStrategy(mediaPlayer),
+            AlarmStrategy alarm = new Alarm(new CurrentDirectoryStrategy(mediaPlayer),
                 new MyMusicAlarmStrategy(mediaPlayer), new SystemBeepAlarmStrategy());
 
-            var timespan = TimeSpan.FromMinutes(5);
+            var timespan = TimeSpan.FromMinutes(0.5);
             TimeRemaining = timespan.ToString(@"hh\:mm\:ss");
             Percentage = 100d;
 
@@ -54,7 +53,7 @@ namespace TimeBox.ViewModels
                     TimeRemaining = "00:00:00";
                     Percentage = 0d;
                     StopTimerCommand.Execute(Timer);
-                    _alarm.HandleAlarm();
+                    alarm.HandleAlarm();
                 }
 
                 OnPropertyChanged(nameof(TimeRemaining));

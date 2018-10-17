@@ -7,19 +7,21 @@ namespace TimeBox.ViewModels
     public class CurrentDirectoryStrategy : AlarmStrategy
     {
         private readonly MediaPlayer _mediaPlayer;
+        private string _path;
 
         public CurrentDirectoryStrategy(MediaPlayer mediaPlayer)
         {
             _mediaPlayer = mediaPlayer;
+            _path = Path.Combine(Environment.CurrentDirectory, "timebox.mp3");
         }
 
         public override AlarmState HandleAlarm()
         {
-            if (!File.Exists(Path.Combine(Environment.CurrentDirectory, "timeup.mp3"))) return AlarmState.Unhandled;
+            if (!File.Exists(_path)) return AlarmState.Unhandled;
 
             _mediaPlayer.Dispatcher.Invoke(() =>
             {
-                _mediaPlayer.Open(new Uri(Path.Combine(Environment.CurrentDirectory, "timeup.mp3")));
+                _mediaPlayer.Open(new Uri(_path));
                 _mediaPlayer.Play();
             });
 
